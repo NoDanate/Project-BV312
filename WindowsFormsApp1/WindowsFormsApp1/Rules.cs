@@ -35,7 +35,7 @@ namespace WindowsFormsApp1
             }
             else
             {
-                if (DaysLeft > 90)
+                if (DaysLeft > 91)
                 {
                     MessageBox.Show("Вы просрочили срок получения результатов мед.освидетельствования. Вам необходимо обратиться в миграционную службу.");
                     controller.Reset();
