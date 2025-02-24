@@ -62,7 +62,7 @@ namespace WindowsFormsApp1
                     controller.Reset();
                 }
             }
-            else if (DaysLeft > 30)
+            else if (DaysLeft > 31)
             {
                 if (userData.Purpose == "Трудоустройство")
                 {
