@@ -12,5 +12,6 @@ namespace WindowsFormsApp1
         public string Purpose { get; set; }
         public string Citizenship { get; set; }
         public string Organization { get; set; }
+        public string Name { get; set; }
     }
 }
