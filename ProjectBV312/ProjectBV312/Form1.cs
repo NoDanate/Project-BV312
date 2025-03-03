@@ -28,6 +28,9 @@ namespace ProjectBV312
             NoteTextBox.Clear();
             currentFilePath = string.Empty;
             this.Text = "Заметки - Новая заметка";
+
+            pdfViewer.Visible = false;
+            NoteTextBox.Visible = true;
         }
 
         private void OpenNote_Click(object sender, EventArgs e)
@@ -65,34 +68,9 @@ namespace ProjectBV312
                             {
                                 MessageBox.Show("Ошибка при открытии PDF: " + ex.Message);
                             }
-                            /*try
-                            {
-                                //Загружаем PDF с помощью PdfiumViewer
-                                var document = PdfiumViewer.PdfDocument.Load(filePath);
-                                pdfViewer.Document = document;
-                                pdfViewer.Visible = true;
-                                NoteTextBox.Visible = false;
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show("Ошибка при открытии PDF: " + ex.Message);
-                            }*/
                         }
                 }
             }
-
-            /*OpenFileDialog openFileDialog = new OpenFileDialog
-            {
-                Filter = "Text Files (*.txt)|*.txt|RTF files (*.rtf)|*.rtf|" +
-                "PDF files (*.pdf)|*.pdf|All Files (*.*)|*.*"
-            };
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                currentFilePath = openFileDialog.FileName;
-                NoteTextBox.Text = File.ReadAllText(currentFilePath);
-                this.Text = $"Заметки - {Path.GetFileName(currentFilePath)}";
-            }*/
         }
 
         private void SaveNote_Click(object sender, EventArgs e)
@@ -134,7 +112,7 @@ namespace ProjectBV312
 
                             using (Bitmap bitmap = new Bitmap(NoteTextBox.Width, NoteTextBox.Height))
                             {
-                                NoteTextBox.DrawToBitmap(bitmap, new System.Drawing.Rectangle(0, 0, bitmap.Width, bitmap.Height));
+                                NoteTextBox.DrawToBitmap(bitmap, new System.Drawing.Rectangle(0, 0, NoteTextBox.Width, NoteTextBox.Height));
 
                                 using (MemoryStream imageStream = new MemoryStream())
                                 {

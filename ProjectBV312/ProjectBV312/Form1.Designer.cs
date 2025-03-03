@@ -45,9 +45,9 @@
             this.FontBtn = new System.Windows.Forms.ToolStripButton();
             this.ColorBtn = new System.Windows.Forms.ToolStripButton();
             this.ImageBtn = new System.Windows.Forms.ToolStripButton();
+            this.searchTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.SearchBtn = new System.Windows.Forms.ToolStripButton();
             this.pdfViewer = new PdfiumViewer.PdfViewer();
-            this.searchTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -104,42 +104,42 @@
             // NewNote
             // 
             this.NewNote.Name = "NewNote";
-            this.NewNote.Size = new System.Drawing.Size(180, 22);
+            this.NewNote.Size = new System.Drawing.Size(111, 22);
             this.NewNote.Text = "New";
             this.NewNote.Click += new System.EventHandler(this.NewNote_Click);
             // 
             // OpenNote
             // 
             this.OpenNote.Name = "OpenNote";
-            this.OpenNote.Size = new System.Drawing.Size(180, 22);
+            this.OpenNote.Size = new System.Drawing.Size(111, 22);
             this.OpenNote.Text = "Open";
             this.OpenNote.Click += new System.EventHandler(this.OpenNote_Click);
             // 
             // SaveNote
             // 
             this.SaveNote.Name = "SaveNote";
-            this.SaveNote.Size = new System.Drawing.Size(180, 22);
+            this.SaveNote.Size = new System.Drawing.Size(111, 22);
             this.SaveNote.Text = "Save";
             this.SaveNote.Click += new System.EventHandler(this.SaveNote_Click);
             // 
             // SaveAsNote
             // 
             this.SaveAsNote.Name = "SaveAsNote";
-            this.SaveAsNote.Size = new System.Drawing.Size(180, 22);
+            this.SaveAsNote.Size = new System.Drawing.Size(111, 22);
             this.SaveAsNote.Text = "SaveAs";
             this.SaveAsNote.Click += new System.EventHandler(this.SaveAsNote_Click);
             // 
             // ClearNote
             // 
             this.ClearNote.Name = "ClearNote";
-            this.ClearNote.Size = new System.Drawing.Size(180, 22);
+            this.ClearNote.Size = new System.Drawing.Size(111, 22);
             this.ClearNote.Text = "Clear";
             this.ClearNote.Click += new System.EventHandler(this.ClearNote_Click);
             // 
             // HelpNote
             // 
             this.HelpNote.Name = "HelpNote";
-            this.HelpNote.Size = new System.Drawing.Size(180, 22);
+            this.HelpNote.Size = new System.Drawing.Size(111, 22);
             this.HelpNote.Text = "Help";
             this.HelpNote.Click += new System.EventHandler(this.HelpNote_Click);
             // 
@@ -210,6 +210,12 @@
             this.ImageBtn.Text = "Image";
             this.ImageBtn.Click += new System.EventHandler(this.ImageBtn_Click);
             // 
+            // searchTextBox
+            // 
+            this.searchTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.searchTextBox.Name = "searchTextBox";
+            this.searchTextBox.Size = new System.Drawing.Size(100, 25);
+            // 
             // SearchBtn
             // 
             this.SearchBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -227,12 +233,6 @@
             this.pdfViewer.Size = new System.Drawing.Size(785, 386);
             this.pdfViewer.TabIndex = 2;
             this.pdfViewer.Visible = false;
-            // 
-            // searchTextBox
-            // 
-            this.searchTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(100, 25);
             // 
             // Form1
             // 
