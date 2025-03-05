@@ -47,7 +47,7 @@ namespace ProjectBV312
             }
             else if (e.Control && e.KeyCode == Keys.O) // Ctrl + O (Открытие)
             {
-                NewNote_Click(null, EventArgs.Empty);
+                OpenNote_Click(null, EventArgs.Empty);
                 e.SuppressKeyPress = true;
             }
         }
@@ -78,7 +78,7 @@ namespace ProjectBV312
         {
             Form1 newEditor = new Form1();
             newEditor.Show();
-            NoteTextBox.Clear();
+
             currentFilePath = string.Empty;
             this.Text = "Заметки - Новая заметка";
 
@@ -93,6 +93,7 @@ namespace ProjectBV312
                 openFileDialog.Filter = "Files (*.txt;*.rtf;*.pdf)|*.txt;*.rtf;*.pdf|Text Files (*.txt)|*.txt|RTF Files (*.rtf)|*.rtf|PDF Files (*.pdf)|*.pdf";
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
+                    currentFilePath = openFileDialog.FileName;
                     string filePath = openFileDialog.FileName;
 
                     if (filePath.EndsWith(".txt", StringComparison.OrdinalIgnoreCase))
@@ -135,7 +136,7 @@ namespace ProjectBV312
             }
             else
             {
-                MessageBox.Show("Вы не указали путь сохранения!", "!!!");
+                SaveAsNote_Click(null, EventArgs.Empty);
             }
         }
 
@@ -146,6 +147,7 @@ namespace ProjectBV312
                 saveFileDialog.Filter = "Files (*.txt;*.rtf;*.pdf)|*.txt;*.rtf;*.pdf|Text Files (*.txt)|*.txt|RTF Files (*.rtf)|*.rtf|PDF Files (*.pdf)|*.pdf";
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
+                    currentFilePath = saveFileDialog.FileName;
                     string filePath = saveFileDialog.FileName;
                     if (filePath.EndsWith(".txt", StringComparison.OrdinalIgnoreCase))
                     {
