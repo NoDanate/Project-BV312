@@ -12,17 +12,42 @@ using System.Windows.Forms;
 using PdfiumViewer;
 using iTextSharp.text.pdf;
 using iTextSharp.text;
+using System.Runtime.CompilerServices;
 
 namespace ProjectBV312
 {
     public partial class Form1: Form
     {
+        
         private string currentFilePath = string.Empty;
         public Form1()
         {
             InitializeComponent();
+            NoteTextBox.KeyDown += RichTextBox_KeyDown;
         }
+        
+        private void RichTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                int cursorPos = NoteTextBox.SelectionStart;
+                string text = NoteTextBox.Text;
 
+                // Ищем предыдущую строку
+                int lineStart = text.LastIndexOf('\n', cursorPos - 2) + 1;
+                string prevLine = text.Substring(lineStart, cursorPos - lineStart).Trim();
+
+                // Если строка начинается с цифры и точки (нумерация)
+                if (System.Text.RegularExpressions.Regex.IsMatch(prevLine, @"^\d+\."))
+                {
+                    e.SuppressKeyPress = true; // Отключаем стандартное поведение Enter
+
+                    // Получаем номер списка
+                    int lastNum = int.Parse(prevLine.Split('.')[0]) + 1;
+                    NoteTextBox.AppendText($"\n{lastNum}. ");
+                }
+            }
+        }
         private void NewNote_Click(object sender, EventArgs e)
         {
             Form1 newEditor = new Form1();
