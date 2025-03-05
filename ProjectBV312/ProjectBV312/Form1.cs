@@ -25,6 +25,8 @@ namespace ProjectBV312
 
         private void NewNote_Click(object sender, EventArgs e)
         {
+            Form1 newEditor = new Form1();
+            newEditor.Show();
             NoteTextBox.Clear();
             currentFilePath = string.Empty;
             this.Text = "Заметки - Новая заметка";
