@@ -24,8 +24,34 @@ namespace ProjectBV312
         {
             InitializeComponent();
             NoteTextBox.KeyDown += RichTextBox_KeyDown;
+            this.KeyPreview = true;  // Позволяет форме перехватывать нажатия клавиш перед отправкой в элементы
+            this.KeyDown += Form1_KeyDown;  // Подписка на обработчик
+
         }
-        
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.B) // Ctrl + B (Жирный шрифт)
+            {
+                BoldBtn_Click(null, EventArgs.Empty);
+                e.SuppressKeyPress = true; // Блокируем стандартное действие
+            }
+            else if (e.Control && e.KeyCode == Keys.I) // Ctrl + I (Курсив)
+            {
+                ItalicBtn_Click(null, EventArgs.Empty);
+                e.SuppressKeyPress = true;
+            }
+            else if (e.Control && e.KeyCode == Keys.S) // Ctrl + S (Сохранение)
+            {
+                SaveNote_Click(null, EventArgs.Empty);
+                e.SuppressKeyPress = true;
+            }
+            else if (e.Control && e.KeyCode == Keys.O) // Ctrl + O (Открытие)
+            {
+                NewNote_Click(null, EventArgs.Empty);
+                e.SuppressKeyPress = true;
+            }
+        }
+
         private void RichTextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
