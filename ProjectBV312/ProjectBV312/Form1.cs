@@ -290,7 +290,6 @@ namespace ProjectBV312
         private void NumberedListButton_Click(object sender, EventArgs e)
         {
             NoteTextBox.SelectionBullet = true;
-            NoteTextBox.SelectionIndent = 30;
             NoteTextBox.SelectedText = "1. ";
         }
 
