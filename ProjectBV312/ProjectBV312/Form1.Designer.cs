@@ -59,9 +59,9 @@
             this.NoteTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.NoteTextBox.Location = new System.Drawing.Point(0, 25);
+            this.NoteTextBox.Location = new System.Drawing.Point(0, 55);
             this.NoteTextBox.Name = "NoteTextBox";
-            this.NoteTextBox.Size = new System.Drawing.Size(785, 386);
+            this.NoteTextBox.Size = new System.Drawing.Size(785, 356);
             this.NoteTextBox.TabIndex = 0;
             this.NoteTextBox.Text = "";
             // 
@@ -236,9 +236,9 @@
             this.pdfViewer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pdfViewer.Location = new System.Drawing.Point(0, 27);
+            this.pdfViewer.Location = new System.Drawing.Point(0, 55);
             this.pdfViewer.Name = "pdfViewer";
-            this.pdfViewer.Size = new System.Drawing.Size(785, 386);
+            this.pdfViewer.Size = new System.Drawing.Size(785, 356);
             this.pdfViewer.TabIndex = 2;
             this.pdfViewer.Visible = false;
             // 
@@ -273,8 +273,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 411);
             this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.NoteTextBox);
             this.Controls.Add(this.pdfViewer);
+            this.Controls.Add(this.NoteTextBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Заметки";
