@@ -48,6 +48,9 @@
             this.searchTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.SearchBtn = new System.Windows.Forms.ToolStripButton();
             this.pdfViewer = new PdfiumViewer.PdfViewer();
+            this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
+            this.BulletListBuutton = new System.Windows.Forms.ToolStripMenuItem();
+            this.NumberedListButton = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,6 +76,7 @@
             this.BoldBtn,
             this.ItalicBtn,
             this.UnderBtn,
+            this.toolStripSplitButton1,
             this.ClearBtn,
             this.FontBtn,
             this.ColorBtn,
@@ -234,6 +238,31 @@
             this.pdfViewer.TabIndex = 2;
             this.pdfViewer.Visible = false;
             // 
+            // toolStripSplitButton1
+            // 
+            this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripSplitButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.BulletListBuutton,
+            this.NumberedListButton});
+            this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripSplitButton1.Name = "toolStripSplitButton1";
+            this.toolStripSplitButton1.Size = new System.Drawing.Size(65, 22);
+            this.toolStripSplitButton1.Text = "Markers";
+            // 
+            // BulletListBuutton
+            // 
+            this.BulletListBuutton.Name = "BulletListBuutton";
+            this.BulletListBuutton.Size = new System.Drawing.Size(180, 22);
+            this.BulletListBuutton.Text = "Bullet";
+            this.BulletListBuutton.Click += new System.EventHandler(this.BulletListBuutton_Click);
+            // 
+            // NumberedListButton
+            // 
+            this.NumberedListButton.Name = "NumberedListButton";
+            this.NumberedListButton.Size = new System.Drawing.Size(180, 22);
+            this.NumberedListButton.Text = "Numbered";
+            this.NumberedListButton.Click += new System.EventHandler(this.NumberedListButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -272,6 +301,9 @@
         private System.Windows.Forms.ToolStripButton FontBtn;
         private System.Windows.Forms.ToolStripButton ColorBtn;
         private System.Windows.Forms.ToolStripTextBox searchTextBox;
+        private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
+        private System.Windows.Forms.ToolStripMenuItem BulletListBuutton;
+        private System.Windows.Forms.ToolStripMenuItem NumberedListButton;
     }
 }
 

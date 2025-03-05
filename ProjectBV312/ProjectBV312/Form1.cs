@@ -257,6 +257,18 @@ namespace ProjectBV312
             }
         }
 
+        private void BulletListBuutton_Click(object sender, EventArgs e)
+        {
+            NoteTextBox.SelectionBullet = true;
+        }
+
+        private void NumberedListButton_Click(object sender, EventArgs e)
+        {
+            NoteTextBox.SelectionBullet = true;
+            NoteTextBox.SelectionIndent = 30;
+            NoteTextBox.SelectedText = "1. ";
+        }
+
 
 
         //Как работать с этим pdf?
