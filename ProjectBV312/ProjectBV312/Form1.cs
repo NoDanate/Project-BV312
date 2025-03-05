@@ -165,12 +165,10 @@ namespace ProjectBV312
             if (NoteTextBox.SelectionFont.Bold)
             {
                 style = style & ~FontStyle.Bold;
-                BoldBtn.BackColor = Color.White;
             }
             else
             {
                 style = style | FontStyle.Bold;
-                BoldBtn.BackColor = Color.LightGray;
             }
             NoteTextBox.SelectionFont = new System.Drawing.Font(NoteTextBox.SelectionFont, style);
             NoteTextBox.Focus();
@@ -182,12 +180,10 @@ namespace ProjectBV312
             if (NoteTextBox.SelectionFont.Italic)
             {
                 style = style & ~FontStyle.Italic;
-                ItalicBtn.BackColor = Color.White;
             }
             else
             {
                 style = style | FontStyle.Italic;
-                ItalicBtn.BackColor = Color.LightGray;
             }
             NoteTextBox.SelectionFont = new System.Drawing.Font(NoteTextBox.SelectionFont, style);
             NoteTextBox.Focus();
@@ -199,12 +195,10 @@ namespace ProjectBV312
             if (NoteTextBox.SelectionFont.Underline)
             {
                 style = style & ~FontStyle.Underline;
-                UnderBtn.BackColor = Color.White;
             }
             else
             {
                 style = style | FontStyle.Underline;
-                UnderBtn.BackColor = Color.LightGray;
             }
             NoteTextBox.SelectionFont = new System.Drawing.Font(NoteTextBox.SelectionFont, style);
             NoteTextBox.Focus();
@@ -214,10 +208,6 @@ namespace ProjectBV312
         {
             NoteTextBox.Clear();
             NoteTextBox.Font = new System.Drawing.Font(NoteTextBox.Font, FontStyle.Regular);
-
-            BoldBtn.BackColor = Color.White;
-            ItalicBtn.BackColor = Color.White;
-            UnderBtn.BackColor = Color.White;
         }
 
         private void ImageBtn_Click(object sender, EventArgs e)
