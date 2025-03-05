@@ -131,17 +131,6 @@ namespace ProjectBV312
                     }
                 }
             }
-
-            /*SaveFileDialog saveFileDialog = new SaveFileDialog
-            {
-                Filter = "Text Files (*.txt)|*.txt|RTF files (*.rtf)|*.rtf|" +
-                "PDF files (*.pdf)|*.pdf|All Files (*.*)|*.*"
-            };
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                currentFilePath = saveFileDialog.FileName;
-            }*/
         }
 
         private void ClearNote_Click(object sender, EventArgs e)
