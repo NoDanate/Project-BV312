@@ -13,6 +13,7 @@ using PdfiumViewer;
 using iTextSharp.text.pdf;
 using iTextSharp.text;
 using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 
 namespace ProjectBV312
 {
@@ -28,6 +29,7 @@ namespace ProjectBV312
             this.KeyDown += Form1_KeyDown;  // Подписка на обработчик
 
         }
+       
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.B) // Ctrl + B (Жирный шрифт)
@@ -159,47 +161,28 @@ namespace ProjectBV312
                     }
                     else if (filePath.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase))
                     {
-                        try
+                        using (FileStream stream = new FileStream(filePath, FileMode.Create))
                         {
-                            using (FileStream stream = new FileStream(filePath, FileMode.Create))
+                            Document pdfDoc = new Document(PageSize.A4);
+                            PdfWriter.GetInstance(pdfDoc, stream);
+                            pdfDoc.Open();
+
+                            // Создание изображения из RichTextBox
+                            using (Bitmap bitmap = new Bitmap(NoteTextBox.Width, NoteTextBox.Height))
                             {
-                                Document pdfDoc = new Document(PageSize.A4);
-                                PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
-                                pdfDoc.Open();
+                                NoteTextBox.DrawToBitmap(bitmap, new System.Drawing.Rectangle(0, 0, bitmap.Width, bitmap.Height));
 
-                                // Читаем текст из RichTextBox
-                                foreach (var line in NoteTextBox.Lines)
+                                using (MemoryStream imageStream = new MemoryStream())
                                 {
-                                    if (!string.IsNullOrWhiteSpace(line))
-                                    {
-                                        pdfDoc.Add(new Paragraph(line));
-                                    }
-                                }
+                                    bitmap.Save(imageStream, System.Drawing.Imaging.ImageFormat.Png);
+                                    iTextSharp.text.Image pdfImage = iTextSharp.text.Image.GetInstance(imageStream.ToArray());
 
-                                // Извлечение изображений из RichTextBox
-                                for (int i = 0; i < NoteTextBox.Text.Length; i++)
-                                {
-                                    NoteTextBox.Select(i, 1);
-                                    if (Clipboard.ContainsImage())
-                                    {
-                                        System.Drawing.Image img = Clipboard.GetImage();
-                                        using (MemoryStream ms = new MemoryStream())
-                                        {
-                                            img.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-                                            iTextSharp.text.Image pdfImage = iTextSharp.text.Image.GetInstance(ms.ToArray());
-                                            pdfDoc.Add(pdfImage);
-                                        }
-                                    }
+                                    pdfImage.ScaleToFit(PageSize.A4.Width - 20, PageSize.A4.Height - 20);
+                                    pdfDoc.Add(pdfImage);
                                 }
-
-                                pdfDoc.Close();
                             }
 
-                            MessageBox.Show("PDF успешно сохранен!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Ошибка при сохранении PDF: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            pdfDoc.Close();
                         }
                     }
                 }
