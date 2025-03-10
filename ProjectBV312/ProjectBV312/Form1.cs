@@ -159,27 +159,47 @@ namespace ProjectBV312
                     }
                     else if (filePath.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase))
                     {
-                        using (FileStream stream = new FileStream(filePath, FileMode.Create))
+                        try
                         {
-                            Document pdfDoc = new Document(PageSize.A4);
-                            PdfWriter.GetInstance(pdfDoc, stream);
-                            pdfDoc.Open();
-
-                            using (Bitmap bitmap = new Bitmap(NoteTextBox.Width, NoteTextBox.Height))
+                            using (FileStream stream = new FileStream(filePath, FileMode.Create))
                             {
-                                NoteTextBox.DrawToBitmap(bitmap, new System.Drawing.Rectangle(0, 0, NoteTextBox.Width, NoteTextBox.Height));
+                                Document pdfDoc = new Document(PageSize.A4);
+                                PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
+                                pdfDoc.Open();
 
-                                using (MemoryStream imageStream = new MemoryStream())
+                                // Читаем текст из RichTextBox
+                                foreach (var line in NoteTextBox.Lines)
                                 {
-                                    bitmap.Save(imageStream, System.Drawing.Imaging.ImageFormat.Png);
-                                    iTextSharp.text.Image pdfImage = iTextSharp.text.Image.GetInstance(imageStream.ToArray());
-
-                                    pdfImage.ScaleToFit(PageSize.A4.Width - 20, PageSize.A4.Height - 20);
-                                    pdfDoc.Add(pdfImage);
+                                    if (!string.IsNullOrWhiteSpace(line))
+                                    {
+                                        pdfDoc.Add(new Paragraph(line));
+                                    }
                                 }
+
+                                // Извлечение изображений из RichTextBox
+                                for (int i = 0; i < NoteTextBox.Text.Length; i++)
+                                {
+                                    NoteTextBox.Select(i, 1);
+                                    if (Clipboard.ContainsImage())
+                                    {
+                                        System.Drawing.Image img = Clipboard.GetImage();
+                                        using (MemoryStream ms = new MemoryStream())
+                                        {
+                                            img.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                                            iTextSharp.text.Image pdfImage = iTextSharp.text.Image.GetInstance(ms.ToArray());
+                                            pdfDoc.Add(pdfImage);
+                                        }
+                                    }
+                                }
+
+                                pdfDoc.Close();
                             }
 
-                            pdfDoc.Close();
+                            MessageBox.Show("PDF успешно сохранен!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Ошибка при сохранении PDF: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }

@@ -41,6 +41,9 @@
             this.BoldBtn = new System.Windows.Forms.ToolStripButton();
             this.ItalicBtn = new System.Windows.Forms.ToolStripButton();
             this.UnderBtn = new System.Windows.Forms.ToolStripButton();
+            this.MarkersBtn = new System.Windows.Forms.ToolStripDropDownButton();
+            this.BulletBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.NumberedBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.ClearBtn = new System.Windows.Forms.ToolStripButton();
             this.FontBtn = new System.Windows.Forms.ToolStripButton();
             this.ColorBtn = new System.Windows.Forms.ToolStripButton();
@@ -48,9 +51,6 @@
             this.searchTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.SearchBtn = new System.Windows.Forms.ToolStripButton();
             this.pdfViewer = new PdfiumViewer.PdfViewer();
-            this.MarkersBtn = new System.Windows.Forms.ToolStripDropDownButton();
-            this.NumberedBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.BulletBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,51 +100,50 @@
             this.SaveAsNote,
             this.ClearNote,
             this.HelpNote});
-            this.toolStripDropDownButton4.Image = global::ProjectBV312.Properties.Resources.saveas_5165;
             this.toolStripDropDownButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton4.Name = "toolStripDropDownButton4";
-            this.toolStripDropDownButton4.Size = new System.Drawing.Size(29, 47);
+            this.toolStripDropDownButton4.Size = new System.Drawing.Size(13, 47);
             this.toolStripDropDownButton4.Text = "File";
             // 
             // NewNote
             // 
             this.NewNote.Name = "NewNote";
-            this.NewNote.Size = new System.Drawing.Size(180, 34);
+            this.NewNote.Size = new System.Drawing.Size(152, 34);
             this.NewNote.Text = "New";
             this.NewNote.Click += new System.EventHandler(this.NewNote_Click);
             // 
             // OpenNote
             // 
             this.OpenNote.Name = "OpenNote";
-            this.OpenNote.Size = new System.Drawing.Size(180, 34);
+            this.OpenNote.Size = new System.Drawing.Size(152, 34);
             this.OpenNote.Text = "Open";
             this.OpenNote.Click += new System.EventHandler(this.OpenNote_Click);
             // 
             // SaveNote
             // 
             this.SaveNote.Name = "SaveNote";
-            this.SaveNote.Size = new System.Drawing.Size(180, 34);
+            this.SaveNote.Size = new System.Drawing.Size(152, 34);
             this.SaveNote.Text = "Save";
             this.SaveNote.Click += new System.EventHandler(this.SaveNote_Click);
             // 
             // SaveAsNote
             // 
             this.SaveAsNote.Name = "SaveAsNote";
-            this.SaveAsNote.Size = new System.Drawing.Size(180, 34);
+            this.SaveAsNote.Size = new System.Drawing.Size(152, 34);
             this.SaveAsNote.Text = "SaveAs";
             this.SaveAsNote.Click += new System.EventHandler(this.SaveAsNote_Click);
             // 
             // ClearNote
             // 
             this.ClearNote.Name = "ClearNote";
-            this.ClearNote.Size = new System.Drawing.Size(180, 34);
+            this.ClearNote.Size = new System.Drawing.Size(152, 34);
             this.ClearNote.Text = "Clear";
             this.ClearNote.Click += new System.EventHandler(this.ClearNote_Click);
             // 
             // HelpNote
             // 
             this.HelpNote.Name = "HelpNote";
-            this.HelpNote.Size = new System.Drawing.Size(180, 34);
+            this.HelpNote.Size = new System.Drawing.Size(152, 34);
             this.HelpNote.Text = "Help";
             this.HelpNote.Click += new System.EventHandler(this.HelpNote_Click);
             // 
@@ -178,6 +177,31 @@
             this.UnderBtn.Text = "Underline";
             this.UnderBtn.Click += new System.EventHandler(this.UnderBtn_Click);
             // 
+            // MarkersBtn
+            // 
+            this.MarkersBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.MarkersBtn.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.BulletBtn,
+            this.NumberedBtn});
+            this.MarkersBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.MarkersBtn.Name = "MarkersBtn";
+            this.MarkersBtn.Size = new System.Drawing.Size(100, 47);
+            this.MarkersBtn.Text = "Markers";
+            // 
+            // BulletBtn
+            // 
+            this.BulletBtn.Name = "BulletBtn";
+            this.BulletBtn.Size = new System.Drawing.Size(185, 34);
+            this.BulletBtn.Text = "Bullet";
+            this.BulletBtn.Click += new System.EventHandler(this.BulletListBuutton_Click);
+            // 
+            // NumberedBtn
+            // 
+            this.NumberedBtn.Name = "NumberedBtn";
+            this.NumberedBtn.Size = new System.Drawing.Size(185, 34);
+            this.NumberedBtn.Text = "Numbered";
+            this.NumberedBtn.Click += new System.EventHandler(this.NumberedListButton_Click);
+            // 
             // ClearBtn
             // 
             this.ClearBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -208,7 +232,6 @@
             // ImageBtn
             // 
             this.ImageBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ImageBtn.Image = global::ProjectBV312.Properties.Resources.add_image;
             this.ImageBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ImageBtn.Name = "ImageBtn";
             this.ImageBtn.Size = new System.Drawing.Size(23, 47);
@@ -224,7 +247,6 @@
             // SearchBtn
             // 
             this.SearchBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.SearchBtn.Image = global::ProjectBV312.Properties.Resources.searchmagnifierinterfacesymbol1_79893__1_;
             this.SearchBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SearchBtn.Name = "SearchBtn";
             this.SearchBtn.Size = new System.Drawing.Size(23, 47);
@@ -241,31 +263,6 @@
             this.pdfViewer.Size = new System.Drawing.Size(785, 356);
             this.pdfViewer.TabIndex = 2;
             this.pdfViewer.Visible = false;
-            // 
-            // MarkersBtn
-            // 
-            this.MarkersBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.MarkersBtn.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.BulletBtn,
-            this.NumberedBtn});
-            this.MarkersBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.MarkersBtn.Name = "MarkersBtn";
-            this.MarkersBtn.Size = new System.Drawing.Size(100, 47);
-            this.MarkersBtn.Text = "Markers";
-            // 
-            // NumberedBtn
-            // 
-            this.NumberedBtn.Name = "NumberedBtn";
-            this.NumberedBtn.Size = new System.Drawing.Size(185, 34);
-            this.NumberedBtn.Text = "Numbered";
-            this.NumberedBtn.Click += new System.EventHandler(this.NumberedListButton_Click);
-            // 
-            // BulletBtn
-            // 
-            this.BulletBtn.Name = "BulletBtn";
-            this.BulletBtn.Size = new System.Drawing.Size(185, 34);
-            this.BulletBtn.Text = "Bullet";
-            this.BulletBtn.Click += new System.EventHandler(this.BulletListBuutton_Click);
             // 
             // Form1
             // 
